@@ -1,18 +1,35 @@
+{% load static %}
 {% load mathfilters %}
 
+body {
+margin: 0;
+}
+
+.background {
+position: absoulte;
+top: 0;
+left: 0;
+width: 1920px;
+height: 1080px;
+margin: 0;
+background-image: url({% static 'overlay_content/background.png' %});
+}
+
 .css-slideshow {
-position: relative;
-max-width: 495px;
-height: 370px;
-margin: 1em auto .5em auto;
+position: absolute;
+left: 1359px;
+top: 61px;
+width: 500px;
+height: 301px;
+margin: 0;
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 font-weight: 300;
 }
 
 .css-slideshow figure {
 margin: 0 auto;
-width: 495px;
-height: 370px;
+width: 500px;
+height: 301px;
 background: #000;
 position: absolute;
 display: flex;
@@ -21,8 +38,8 @@ display: flex;
 .css-slideshow img {
 -webkit-box-shadow: 0 0 2px #666;
 box-shadow: 0 0 2px #666;
-max-width: 495px;
-max-height: 370px;
+max-width: 500px;
+max-height: 301px;
 margin: auto;
 }
 
@@ -37,7 +54,7 @@ padding: 8px 12px;
 }
 
 .css-slideshow-attr {
-max-width: 530px;
+max-width: 500px;
 text-align: right;
 font-size: .7em;
 font-style: italic;

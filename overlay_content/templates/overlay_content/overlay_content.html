@@ -2,13 +2,15 @@
 
 <link rel="stylesheet" type="text/css" href="style.css" />
 
-<div class="css-slideshow">
-    {# TODO size #}
-    {% for image in images %}
-    <figure>
-        {#<img src={% static image.filename %} width=495 height=370 class="alignnone size-full wp-image-172" />#}
-        <img src={% static image.filename %} class="alignnone size-full wp-image-172" />
-        <figcaption>{{ image.caption }}</figcaption>
-    </figure>
-    {% endfor %}
+<div class="background">
+    <div class="css-slideshow">
+        {# TODO size #}
+        {% for image in images %}
+        <figure>
+            {#<img src={% static image.filename %} width=495 height=370 class="alignnone size-full wp-image-172" />#}
+            <img src={% static image.filename %} class="alignnone size-full wp-image-172" />
+            <figcaption>{{ image.caption }}</figcaption>
+        </figure>
+        {% endfor %}
+    </div>
 </div>
