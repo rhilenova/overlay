@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'overlay_content.apps.OverlayContentConfig',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [

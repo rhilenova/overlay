@@ -1,3 +1,5 @@
+{% load mathfilters %}
+
 .css-slideshow {
 position: relative;
 max-width: 495px;
@@ -8,16 +10,20 @@ font-weight: 300;
 }
 
 .css-slideshow figure {
-margin: 0;
-max-width: 495px;
+margin: 0 auto;
+width: 495px;
 height: 370px;
-background: #fff;
+background: #000;
 position: absolute;
+display: flex;
 }
 
 .css-slideshow img {
 -webkit-box-shadow: 0 0 2px #666;
 box-shadow: 0 0 2px #666;
+max-width: 495px;
+max-height: 370px;
+margin: auto;
 }
 
 .css-slideshow figcaption {
@@ -41,40 +47,36 @@ font-style: italic;
 color: #666;
 }
 
-.css-slideshow figure:nth-child(1),.css-slideshow figure:nth-child(2),.css-slideshow figure:nth-child(3),.css-slideshow figure:nth-child(4),.css-slideshow figure:nth-child(5),.css-slideshow figure:nth-child(6),.css-slideshow figure:nth-child(7) {
+
+{% for image in images %}
+.css-slideshow figure:nth-child({{ forloop.counter }}) {
 -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 filter: alpha(opacity=0);
 opacity: 0;
 }
 
-.css-slideshow figure:nth-child(1) {
--webkit-animation: xfade 16s 0s  infinite;
--moz-animation: xfade 16s 0s  infinite;
--ms-animation: xfade 16s 0s infinite;
--o-animation: xfade 16s 0s infinite;
-animation: xfade 16s 0s infinite;
+.css-slideshow figure:nth-child({{ forloop.counter }}) {
+-webkit-animation: xfade {{ images|length|mul:8 }}s {{ forloop.counter|sub:1|mul:8 }}s  infinite;
+-moz-animation: xfade {{ images|length|mul:8 }}s {{ forloop.counter|sub:1|mul:8 }}s  infinite;
+-ms-animation: xfade {{ images|length|mul:8 }}s {{ forloop.counter|sub:1|mul:8 }}s infinite;
+-o-animation: xfade {{ images|length|mul:8 }}s {{ forloop.counter|sub:1|mul:8 }}s infinite;
+animation: xfade {{ images|length|mul:8 }}s {{ forloop.counter|sub:1|mul:8 }}s infinite;
 }
+{% endfor %}
 
-.css-slideshow figure:nth-child(2) {
--webkit-animation: xfade 16s 8s  infinite;
--moz-animation: xfade 16s 8s  infinite;
--ms-animation: xfade 16s 8s infinite;
--o-animation: xfade 16s 8s infinite;
-animation: xfade 16s 8s infinite;
-}
-
+{% with num_images=images|length %}
 @keyframes "xfade" {
  0% {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
    	filter: alpha(opacity=100);
    	opacity: 1;
  }
- 48% {
+ {{ 100.0|div:num_images|sub:2 }}% {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: alpha(opacity=100);
 	opacity: 1;
  }
- 50% {
+ {{ 100.0|div:num_images }}% {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
 	opacity: 0;
@@ -95,11 +97,11 @@ animation: xfade 16s 8s infinite;
    filter: alpha(opacity=100);
    opacity: 1;
  }
- 48% {
+ {{ 100.0|div:num_images|sub:2 }}% {
 	filter: alpha(opacity=100);
 	opacity: 1;
  }
- 50% {
+ {{ 100.0|div:num_images }}% {
 	filter: alpha(opacity=0);
 	opacity: 0;
  }
@@ -117,11 +119,11 @@ animation: xfade 16s 8s infinite;
    filter: alpha(opacity=100);
    opacity: 1;
  }
- 48% {
+ {{ 100.0|div:num_images|sub:2 }}% {
 	filter: alpha(opacity=100);
 	opacity: 1;
  }
- 50% {
+ {{ 100.0|div:num_images }}% {
 	filter: alpha(opacity=0);
 	opacity: 0;
  }
@@ -140,12 +142,12 @@ animation: xfade 16s 8s infinite;
    filter: alpha(opacity=100);
    opacity: 1;
  }
- 48% {
+ {{ 100.0|div:num_images|sub:2 }}% {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: alpha(opacity=100);
 	opacity: 1;
  }
- 50% {
+ {{ 100.0|div:num_images }}% {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
 	opacity: 0;
@@ -166,11 +168,11 @@ animation: xfade 16s 8s infinite;
    filter: alpha(opacity=100);
    opacity: 1;
  }
- 48% {
+ {{ 100.0|div:num_images|sub:2 }}% {
 	filter: alpha(opacity=100);
 	opacity: 1;
  }
- 50% {
+ {{ 100.0|div:num_images }}% {
 	filter: alpha(opacity=0);
 	opacity: 0;
  }
@@ -183,3 +185,4 @@ animation: xfade 16s 8s infinite;
    opacity: 1;
  }
 }
+{% endwith %}

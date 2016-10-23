@@ -19,6 +19,7 @@ from django.contrib import admin
 from overlay_content import views
 
 urlpatterns = [
+    url(r'^style.css', views.overlay_css),
     url(r'^', views.overlay),
     url(r'^admin/', admin.site.urls),
 ]
