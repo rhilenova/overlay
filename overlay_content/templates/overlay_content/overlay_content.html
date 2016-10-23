@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'overlay_content/style.css' %}" />
+
+<div class="css-slideshow">
+    {% for image in images %}
+    <!-- TODO size -->
+    <figure>
+        <img src={% static image.filename %} width=495 height=370 class="alignnone size-full wp-image-172" />
+        <figcaption>{{ image.caption }}</figcaption>
+    </figure>
+    {% endfor %}
+</div>
